@@ -4,7 +4,7 @@ import { config } from "@/config";
 
 export default function WeddingGift() {
   return (
-    <section id="hadiah" className="bg-stone-900 text-white py-16 px-6">
+    <section id="hadiah" className="bg-[#272727] text-white py-16 px-6">
       <SectionWrapper>
         <div className="max-w-sm mx-auto space-y-8">
           <div className="text-center space-y-1">
@@ -21,7 +21,7 @@ export default function WeddingGift() {
             {config.gift.accounts.map((acc, i) => (
               <div
                 key={i}
-                className="border border-stone-700 rounded-xl p-5 space-y-3"
+                className="border border-[#5c5959] rounded-xl p-5 space-y-3"
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -33,7 +33,7 @@ export default function WeddingGift() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center justify-between gap-3 bg-stone-800 rounded-lg px-4 py-3">
+                <div className="flex items-center justify-between gap-3 bg-[#000000] rounded-lg px-4 py-3">
                   <div>
                     <p className="text-stone-400 text-xs">Nomor Rekening</p>
                     <p className="text-white font-mono tracking-wider">

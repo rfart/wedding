@@ -4,11 +4,20 @@
   --font-serif: var(--font-playfair), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
-  --color-cream: #faf8f5;
-  --color-beige: #e8e0d5;
-  --color-gold: #c9a96e;
+  /* Monochrome Ash Palette */
+  --color-ash-black:  #000000;
+  --color-ash-dark:   #272727;
+  --color-ash-mid:    #5c5959;
+  --color-ash-gray:   #969393;
+  --color-ash-light:  #c9c7c7;
+
+  /* Semantic aliases used throughout components */
+  --color-cream:      #c9c7c7;   /* lightest ash — section backgrounds */
+  --color-beige:      #969393;   /* medium ash — borders, dividers     */
+  --color-gold:       #5c5959;   /* dark ash — accent / CTA            */
+
   --color-background: #ffffff;
-  --color-foreground: #1a1a1a;
+  --color-foreground: #272727;
 }
 
 html {

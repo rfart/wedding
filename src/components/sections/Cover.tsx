@@ -17,7 +17,7 @@ const fadeUp = (delay: number) => ({
 export default function Cover({ onOpen }: CoverProps) {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d0d0d] text-white overflow-hidden"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#000000] text-white overflow-hidden"
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
