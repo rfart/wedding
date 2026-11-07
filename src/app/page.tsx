@@ -17,12 +17,21 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    // Always lock scroll when cover is present
     if (!isOpen) {
       document.body.classList.add("cover-open");
-    } else {
-      document.body.classList.remove("cover-open");
+      return () => document.body.classList.remove("cover-open");
     }
+
+    // isOpen = true: keep locked during the cover slide-up animation (850ms),
+    // then unlock and hard-reset scroll to top so the page starts at section 1.
+    document.body.classList.add("cover-open");
+    const t = setTimeout(() => {
+      document.body.classList.remove("cover-open");
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 900);
     return () => {
+      clearTimeout(t);
       document.body.classList.remove("cover-open");
     };
   }, [isOpen]);
