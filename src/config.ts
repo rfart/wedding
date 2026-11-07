@@ -1,70 +1,70 @@
 export const config = {
   couple: {
-    initials: "M & W",
-    groomNickname: "[Nama Panggilan Pria]",
-    brideNickname: "[Nama Panggilan Wanita]",
+    initials: "R & S",
+    groomNickname: "Radifan",
+    brideNickname: "Syifa",
     groom: {
-      fullName: "[Nama Lengkap Mempelai Pria]",
-      fatherName: "[Nama Ayah Mempelai Pria]",
-      motherName: "[Nama Ibu Mempelai Pria]",
+      fullName: "Radifan Aji Karami, S.Kom.",
+      fatherName: "Dr(c). Slamet Aji Pamungkas, M.Eng.",
+      motherName: "Martini",
       instagram: "https://instagram.com/placeholder",
-      photo: "https://placehold.co/400x500/1a1a1a/ffffff?text=Mempelai+Pria",
+      photo: "https://placehold.co/400x500/1a1a1a/ffffff?text=Radifan",
     },
     bride: {
-      fullName: "[Nama Lengkap Mempelai Wanita]",
-      fatherName: "[Nama Ayah Mempelai Wanita]",
-      motherName: "[Nama Ibu Mempelai Wanita]",
+      fullName: "Syifa Rahmatika, S.M.",
+      fatherName: "Alm. Sarwo Utomo",
+      motherName: "Rodiah",
       instagram: "https://instagram.com/placeholder",
-      photo: "https://placehold.co/400x500/e8e0d5/1a1a1a?text=Mempelai+Wanita",
+      photo: "https://placehold.co/400x500/e8e0d5/1a1a1a?text=Syifa",
     },
   },
   event: {
-    dateLabel: "[Hari, DD Bulan YYYY]",
-    dateISO: "2025-12-31T00:00:00",
+    dateLabel: "Minggu, 6 Desember 2026",
+    dateISO: "2026-12-06T09:00:00",
     akad: {
-      time: "[HH.00 – HH.00 WIB]",
+      time: "09.00 WIB – selesai",
       label: "Akad Nikah",
     },
     resepsi: {
-      time: "[HH.00 – HH.00 WIB]",
+      time: "11.00 – 13.00 WIB",
       label: "Resepsi Pernikahan",
     },
     venue: {
-      name: "[Nama Gedung / Tempat]",
-      address: "[Alamat Lengkap, Kota]",
-      mapsUrl: "https://maps.google.com/?q=placeholder",
+      name: "Hotel Lemo Serpong",
+      address: "Jl. Raya Legok Karawaci, Kelapa Dua, Tangerang 15810",
+      mapsUrl: "https://maps.google.com/?q=Hotel+Lemo+Serpong,+Jl.+Raya+Legok+Karawaci,+Kelapa+Dua,+Tangerang+15810",
       calendarUrl:
-        "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+%5BNama+Pasangan%5D&dates=20251231T070000Z%2F20251231T150000Z&details=Undangan+Pernikahan&location=%5BAlamat+Lokasi%5D",
+        "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Radifan+%26+Syifa&dates=20261206T020000Z%2F20261206T060000Z&details=Akad+Nikah+pukul+09.00+WIB+%7C+Resepsi+11.00%E2%80%9313.00+WIB&location=Hotel+Lemo+Serpong,+Jl.+Raya+Legok+Karawaci,+Kelapa+Dua,+Tangerang+15810",
     },
   },
-  heroPhoto: "https://placehold.co/390x844/0d0d0d/ffffff?text=Hero+Photo",
+  heroPhoto: "https://placehold.co/390x844/0d0d0d/ffffff?text=Radifan+%26+Syifa",
   loveStory: [
     {
-      year: "[Tahun]",
+      year: "2020",
       title: "Pertemuan Pertama",
       description:
-        "[Cerita singkat tentang pertemuan pertama pasangan. Di mana, kapan, dan bagaimana kisahnya dimulai.]",
+        "[Cerita singkat tentang pertemuan pertama Radifan dan Syifa. Di mana, kapan, dan bagaimana kisah indah ini dimulai.]",
       photo: "https://placehold.co/400x300/e8e0d5/1a1a1a?text=Love+Story+1",
     },
     {
-      year: "[Tahun]",
+      year: "2021",
       title: "Mengenal Lebih Dekat",
       description:
-        "[Cerita tentang proses saling mengenal, momen-momen spesial yang dilalui bersama.]",
+        "[Cerita tentang proses saling mengenal, momen-momen spesial yang dilalui bersama oleh Radifan dan Syifa.]",
       photo: "https://placehold.co/400x300/1a1a1a/ffffff?text=Love+Story+2",
     },
     {
-      year: "[Tahun]",
+      year: "2025",
       title: "Lamaran",
       description:
-        "[Cerita tentang momen lamaran yang tak terlupakan dan keputusan untuk bersatu selamanya.]",
+        "[Cerita tentang momen lamaran yang tak terlupakan dan keputusan untuk bersatu selamanya dalam ikatan suci pernikahan.]",
       photo: "https://placehold.co/400x300/e8e0d5/1a1a1a?text=Love+Story+3",
     },
     {
-      year: "[Tahun]",
+      year: "2026",
       title: "Menuju Pelaminan",
       description:
-        "[Cerita persiapan menuju hari pernikahan, penuh suka cita dan doa dari keluarga.]",
+        "[Cerita persiapan menuju hari pernikahan di 6 Desember 2026, penuh suka cita dan doa dari keluarga serta orang-orang terkasih.]",
       photo: "https://placehold.co/400x300/1a1a1a/ffffff?text=Love+Story+4",
     },
   ],
@@ -116,7 +116,7 @@ export const config = {
     googleFormsUrl: "https://docs.google.com/forms/d/e/placeholder/viewform?embedded=true",
   },
   closing: {
-    photo: "https://placehold.co/390x500/0d0d0d/ffffff?text=Closing+Photo",
+    photo: "https://placehold.co/390x500/0d0d0d/ffffff?text=Radifan+%26+Syifa",
     message:
       "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.",
   },

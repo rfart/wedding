@@ -10,6 +10,7 @@ function ProfileCard({
   motherName,
   instagram,
   role,
+  childLabel,
 }: {
   photo: string;
   fullName: string;
@@ -17,6 +18,7 @@ function ProfileCard({
   motherName: string;
   instagram: string;
   role: string;
+  childLabel: string;
 }) {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
@@ -37,7 +39,7 @@ function ProfileCard({
           {fullName}
         </h3>
         <p className="text-stone-500 text-sm">
-          Putra/i dari {fatherName}
+          {childLabel} dari {fatherName}
           <br />& {motherName}
         </p>
         <a
@@ -69,23 +71,25 @@ export default function ProfilMempelai() {
           </div>
           <div className="flex justify-around items-start gap-4">
             <ProfileCard
-              photo={config.couple.groom.photo}
-              fullName={config.couple.groom.fullName}
-              fatherName={config.couple.groom.fatherName}
-              motherName={config.couple.groom.motherName}
-              instagram={config.couple.groom.instagram}
-              role="Mempelai Pria"
-            />
-            <div className="flex flex-col items-center pt-24">
-              <span className="font-serif text-2xl text-gold">&amp;</span>
-            </div>
-            <ProfileCard
               photo={config.couple.bride.photo}
               fullName={config.couple.bride.fullName}
               fatherName={config.couple.bride.fatherName}
               motherName={config.couple.bride.motherName}
               instagram={config.couple.bride.instagram}
               role="Mempelai Wanita"
+              childLabel="Putri"
+            />
+            <div className="flex flex-col items-center pt-24">
+              <span className="font-serif text-2xl text-gold">&amp;</span>
+            </div>
+            <ProfileCard
+              photo={config.couple.groom.photo}
+              fullName={config.couple.groom.fullName}
+              fatherName={config.couple.groom.fatherName}
+              motherName={config.couple.groom.motherName}
+              instagram={config.couple.groom.instagram}
+              role="Mempelai Pria"
+              childLabel="Putra"
             />
           </div>
         </div>
