@@ -21,8 +21,8 @@ function ProfileCard({
   childLabel: string;
 }) {
   return (
-    <div className="flex flex-col items-center gap-4 text-center">
-      <div className="relative w-44 h-56 rounded-xl overflow-hidden shadow-md">
+    <div className="flex flex-col items-center gap-4 text-center w-full sm:w-auto">
+      <div className="relative w-48 h-60 sm:w-40 sm:h-52 rounded-xl overflow-hidden shadow-md mx-auto">
         <Image
           src={photo}
           alt={fullName}
@@ -60,7 +60,7 @@ export default function ProfilMempelai() {
   return (
     <section id="pasangan" className="bg-white py-16 px-6">
       <SectionWrapper>
-        <div className="max-w-sm mx-auto space-y-10">
+        <div className="max-w-lg mx-auto space-y-10">
           <div className="text-center space-y-1">
             <p className="text-gold text-xs uppercase tracking-widest">
               Mempelai
@@ -69,7 +69,9 @@ export default function ProfilMempelai() {
               Profil Pasangan
             </h2>
           </div>
-          <div className="flex justify-around items-start gap-4">
+
+          {/* Mobile: stacked vertically / sm+: side by side */}
+          <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:items-start sm:gap-8">
             <ProfileCard
               photo={config.couple.bride.photo}
               fullName={config.couple.bride.fullName}
@@ -79,7 +81,7 @@ export default function ProfilMempelai() {
               role="Mempelai Wanita"
               childLabel="Putri"
             />
-            <div className="flex flex-col items-center pt-24">
+            <div className="flex items-center sm:pt-24">
               <span className="font-serif text-2xl text-gold">&amp;</span>
             </div>
             <ProfileCard

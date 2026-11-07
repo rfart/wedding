@@ -8,15 +8,17 @@ export default function Mukadimah() {
           <p className="text-stone-400 text-xs tracking-widest uppercase">
             Bismillahirrahmanirrahim
           </p>
-          <p
-            className="font-serif text-2xl leading-loose text-stone-800 text-right"
-            dir="rtl"
-            lang="ar"
-          >
-            وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ
-            أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم
-            مَّوَدَّةً وَرَحْمَةً
-          </p>
+          <div className="w-full overflow-hidden">
+            <p
+              className="font-serif text-2xl leading-loose text-stone-800 text-center"
+              dir="rtl"
+              lang="ar"
+            >
+              وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ
+              أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم
+              مَّوَدَّةً وَرَحْمَةً
+            </p>
+          </div>
           <div className="w-12 h-px bg-gold mx-auto" />
           <p className="text-stone-600 text-sm leading-relaxed italic">
             &ldquo;Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia
