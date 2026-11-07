@@ -29,25 +29,22 @@ export default function Home() {
 
   return (
     <>
+      {/* Main content always rendered underneath so it's visible as cover slides away */}
+      <main>
+        <Mukadimah />
+        <ProfilMempelai />
+        <DetailAcara />
+        <LoveStory />
+        <Galeri />
+        <WeddingGift />
+        <RsvpWishes />
+        <Penutup />
+      </main>
+      {isOpen && <BottomNav />}
+
       <AnimatePresence>
         {!isOpen && <Cover key="cover" onOpen={() => setIsOpen(true)} />}
       </AnimatePresence>
-
-      {isOpen && (
-        <>
-          <main>
-            <Mukadimah />
-            <ProfilMempelai />
-            <DetailAcara />
-            <LoveStory />
-            <Galeri />
-            <WeddingGift />
-            <RsvpWishes />
-            <Penutup />
-          </main>
-          <BottomNav />
-        </>
-      )}
     </>
   );
 }

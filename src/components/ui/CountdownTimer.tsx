@@ -21,9 +21,11 @@ function getTimeLeft(target: string): TimeLeft {
 }
 
 export default function CountdownTimer({ targetDate }: { targetDate: string }) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(getTimeLeft(targetDate));
+  // Initialize with null to avoid Date.now() during SSR/prerender
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
+    setTimeLeft(getTimeLeft(targetDate));
     const id = setInterval(() => {
       const t = getTimeLeft(targetDate);
       setTimeLeft(t);
@@ -35,10 +37,10 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
   }, [targetDate]);
 
   const units = [
-    { label: "Hari", value: timeLeft.days },
-    { label: "Jam", value: timeLeft.hours },
-    { label: "Menit", value: timeLeft.minutes },
-    { label: "Detik", value: timeLeft.seconds },
+    { label: "Hari", value: timeLeft?.days ?? 0 },
+    { label: "Jam", value: timeLeft?.hours ?? 0 },
+    { label: "Menit", value: timeLeft?.minutes ?? 0 },
+    { label: "Detik", value: timeLeft?.seconds ?? 0 },
   ];
 
   return (
@@ -49,7 +51,7 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
           className="flex flex-col items-center bg-white border border-beige rounded-lg px-4 py-3 min-w-[64px]"
         >
           <span className="font-serif text-2xl font-semibold text-stone-800 leading-none">
-            {String(value).padStart(2, "0")}
+            {timeLeft ? String(value).padStart(2, "0") : "--"}
           </span>
           <span className="text-xs text-stone-500 mt-1 uppercase tracking-wide">
             {label}
