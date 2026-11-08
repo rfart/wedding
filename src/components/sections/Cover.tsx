@@ -32,7 +32,7 @@ export default function Cover({ onOpen }: CoverProps) {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleWheel = (e: React.WheelEvent) => {
@@ -53,67 +53,173 @@ export default function Cover({ onOpen }: CoverProps) {
       onWheel={handleWheel}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-bg text-fg overflow-hidden cursor-pointer"
+      className="fixed inset-0 z-50 flex flex-col bg-bg text-fg cursor-pointer"
       exit={{ y: "-100%" }}
       transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] } as Transition}
       onClick={trigger}
     >
-      <Image
-        src={config.heroPhoto}
-        alt="Cover photo"
-        fill
-        className="object-cover opacity-40"
-        priority
-        unoptimized
-      />
-
-      <div className="relative z-10 flex flex-col items-center gap-5 px-8 text-center">
-        <motion.p
-          {...fadeUp(0.3)}
-          className="font-serif text-6xl font-light tracking-widest text-fg"
-        >
-          {config.couple.initials}
-        </motion.p>
-
-        <motion.div {...fadeUp(0.6)} className="space-y-1">
-          <p className="font-serif text-xl font-medium text-fg">
-            {config.couple.brideNickname}
-          </p>
-          <p className="text-fg/50 text-sm">&amp;</p>
-          <p className="font-serif text-xl font-medium text-fg">
-            {config.couple.groomNickname}
-          </p>
-        </motion.div>
-
-        <motion.p
-          {...fadeUp(0.9)}
-          className="text-fg/60 text-sm tracking-widest uppercase"
-        >
-          {config.event.dateLabel}
-        </motion.p>
+      {/* Top: hero photo ~55vh */}
+      <div className="relative h-[55vh] shrink-0">
+        <Image
+          src={config.heroPhoto}
+          alt="Cover photo"
+          fill
+          className="object-cover object-top"
+          priority
+          unoptimized
+        />
+        {/* Gradient fading photo into dark bg below */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-bg" />
       </div>
 
+      {/* Flowers — anchored to viewport edges, vertically centered in bottom panel */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.8 } as Transition}
-        className="absolute bottom-10 flex flex-col items-center gap-1"
+        className="absolute left-0 z-10 pointer-events-none"
+        style={{ top: "55vh", bottom: 0, display: "flex", alignItems: "center", translateX: "-50%" }}
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1.0, ease: [0.22, 1, 0.36, 1] } as Transition}
       >
-        <motion.div
-          animate={{ y: [0, -6, 0] }}
-          transition={{
-            repeat: Infinity,
-            duration: 1.4,
-            ease: "easeInOut",
-            delay: 1.8,
-          } as Transition}
-        >
-          <ChevronsUp size={24} className="text-fg/50" />
-        </motion.div>
-        <span className="text-fg/40 text-[10px] uppercase tracking-widest">
-          Swipe up
-        </span>
+        <Image
+          src="/images/flower.png"
+          alt=""
+          width={200}
+          height={1000}
+          className="opacity-70"
+          style={{ transform: "scaleX(-1)" }}
+          unoptimized
+        />
       </motion.div>
+      <motion.div
+        className="absolute right-0 z-10 pointer-events-none"
+        style={{ top: "55vh", bottom: 0, display: "flex", alignItems: "center", translateX: "50%" }}
+        initial={{ x: "100%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1.0, ease: [0.22, 1, 0.36, 1] } as Transition}
+      >
+        <Image
+          src="/images/flower.png"
+          alt=""
+          width={200}
+          height={1000}
+          className="opacity-70"
+          unoptimized
+        />
+      </motion.div>
+
+      {/* Bottom: dark content panel */}
+      <div className="relative flex-1 bg-bg flex flex-col items-center justify-center gap-3 px-16 pb-16 text-center">
+
+        {/* "Dear Family & Friends" */}
+        <motion.p
+          {...fadeUp(0.3)}
+          className="font-sans text-fg/60 uppercase"
+          style={{ fontSize: "var(--font-size-label)", letterSpacing: "var(--tracking-caps)" }}
+        >
+          The wedding of
+        </motion.p>
+
+        {/* Bride name */}
+        <motion.p
+          {...fadeUp(0.5)}
+          className="text-fg leading-none"
+          style={{ fontSize: "var(--font-size-display)", fontFamily: "var(--font-armelie)" }}
+        >
+          {config.couple.brideNickname}
+        </motion.p>
+
+        {/* ampersand */}
+        <motion.p
+          {...fadeUp(0.65)}
+          className="font-sans text-fg/60 text-sm"
+          style={{ fontFamily: "var(--font-armelie)" }}
+        >
+          &amp;
+        </motion.p>
+
+        {/* Groom name */}
+        <motion.p
+          {...fadeUp(0.8)}
+          className="text-fg leading-none"
+          style={{ fontSize: "var(--font-size-display)", fontFamily: "var(--font-armelie)" }}
+        >
+          {config.couple.groomNickname}
+        </motion.p>
+
+        {/* Invitation tagline */}
+        <motion.p
+          {...fadeUp(1.0)}
+          className="font-sans text-fg/60 mt-1"
+          style={{ fontSize: "var(--font-size-label)", letterSpacing: "var(--tracking-caps)" }}
+        >
+          Kepada Bapak/Ibu/Saudara/i
+        </motion.p>
+        <motion.p
+          {...fadeUp(1.05)}
+          className="font-sans text-fg/60 -mt-2"
+          style={{ fontSize: "var(--font-size-label)" }}
+        >
+          Nama Tamu
+        </motion.p>
+
+        {/* Date */}
+        {/* <motion.p
+          {...fadeUp(1.15)}
+          className="font-sans font-semibold text-fg mt-1"
+          style={{ fontSize: "var(--font-size-body)", letterSpacing: "var(--tracking-wide)" }}
+        >
+          {config.event.dateLabel.toUpperCase()}
+        </motion.p> */}
+
+        {/* Time */}
+        {/* <motion.p
+          {...fadeUp(1.25)}
+          className="font-sans font-semibold text-fg -mt-2"
+          style={{ fontSize: "var(--font-size-body)", letterSpacing: "var(--tracking-wide)" }}
+        >
+          {config.event.akad.time.split("–")[0].trim()}
+        </motion.p> */}
+
+        {/* Venue */}
+        {/* <motion.p
+          {...fadeUp(1.35)}
+          className="font-sans text-fg/60 text-sm mt-0.5"
+        >
+          {config.event.venue.name}
+        </motion.p>
+        <motion.p
+          {...fadeUp(1.4)}
+          className="font-sans text-fg/60 text-xs -mt-2 max-w-[220px]"
+        >
+          {config.event.venue.address}
+        </motion.p> */}
+
+        {/* Swipe up indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8, duration: 0.8 } as Transition}
+          className="absolute bottom-6 flex flex-col items-center gap-1"
+        >
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{
+              repeat: Infinity,
+              duration: 1.4,
+              ease: "easeInOut",
+              delay: 2.0,
+            } as Transition}
+          >
+            <ChevronsUp size={24} className="text-fg/50" />
+          </motion.div>
+          <span
+            className="text-fg/40 uppercase"
+            style={{ fontSize: "var(--font-size-label)", letterSpacing: "var(--tracking-caps)" }}
+          >
+            Swipe up
+          </span>
+        </motion.div>
+      </div>
     </motion.div>
   );
 }

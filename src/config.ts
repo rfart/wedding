@@ -37,7 +37,7 @@ export const config = {
         "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Radifan+%26+Syifa&dates=20261206T020000Z%2F20261206T060000Z&details=Akad+Nikah+pukul+09.00+WIB+%7C+Resepsi+11.00%E2%80%9313.00+WIB&location=Hotel+Lemo+Serpong,+Jl.+Raya+Legok+Karawaci,+Kelapa+Dua,+Tangerang+15810",
     },
   },
-  heroPhoto: "https://placehold.co/390x844/060906/DCDBDC?text=Radifan+%26+Syifa",
+  heroPhoto: "/images/placeholder.jpg",
   loveStory: [
     {
       year: "2020",
