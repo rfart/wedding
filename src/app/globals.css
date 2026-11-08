@@ -12,12 +12,12 @@
    RAW PALETTE — only change values here to retheme the entire site
    ════════════════════════════════════════════════════════════════════════════ */
 :root {
-  --palette-1: #E9DCCB;   /* Aged Parchment  — lightest */
-  --palette-2: #C0B0A4;   /* Balanced Beige              */
-  --palette-3: #A19088;   /* Chatura Beige               */
-  --palette-4: #82726F;   /* Noble Robe                  */
-  --palette-5: #5C5150;   /* Spell                       */
-  --palette-6: #242224;   /* Raisin Black    — darkest   */
+  --palette-1: #B7A8A1;   /* Riveter Rose    — lightest  */
+  --palette-2: #8C796E;   /* Cedar Plank                 */
+  --palette-3: #5D5148;   /* Oak Creek                   */
+  --palette-4: #222122;   /* Black Out                   */
+  --palette-5: #141313;   /* Cursed Black                */
+  --palette-6: #060707;   /* Black Metal     — darkest   */
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
