@@ -12,11 +12,9 @@ function getAuth() {
     /\\n/g,
     "\n"
   );
-  return new google.auth.GoogleAuth({
-    credentials: {
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: privateKey,
-    },
+  return new google.auth.JWT({
+    email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+    key: privateKey,
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 }

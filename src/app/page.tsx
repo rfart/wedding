@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
 import Cover from "@/components/sections/Cover";
 import BottomNav from "@/components/layout/BottomNav";
@@ -13,8 +14,10 @@ import WeddingGift from "@/components/sections/WeddingGift";
 import RsvpWishes from "@/components/sections/RsvpWishes";
 import Penutup from "@/components/sections/Penutup";
 
-export default function Home() {
+function HomeContent() {
   const [isOpen, setIsOpen] = useState(false);
+  const params = useSearchParams();
+  const tamu = params.get("tamu") ?? "";
 
   useEffect(() => {
     // Always lock scroll when cover is present
@@ -46,7 +49,7 @@ export default function Home() {
         <LoveStory />
         <Galeri />
         <WeddingGift />
-        <RsvpWishes />
+        <RsvpWishes tamu={tamu} />
         <Penutup />
       </main>
       {isOpen && <BottomNav />}
@@ -55,5 +58,13 @@ export default function Home() {
         {!isOpen && <Cover key="cover" onOpen={() => setIsOpen(true)} />}
       </AnimatePresence>
     </>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense>
+      <HomeContent />
+    </Suspense>
   );
 }

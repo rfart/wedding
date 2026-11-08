@@ -113,7 +113,10 @@ export const config = {
     ],
   },
   rsvp: {
-    googleFormsUrl: "https://docs.google.com/forms/d/e/placeholder/viewform?embedded=true",
+    googleFormsUrl: process.env.NEXT_PUBLIC_RSVP_FORM_URL ?? "",
+    nameEntryId: process.env.NEXT_PUBLIC_RSVP_NAME_ENTRY_ID ?? "",
+    attendanceEntryId: process.env.NEXT_PUBLIC_RSVP_ATTENDANCE_ENTRY_ID ?? "",
+    messageEntryId: process.env.NEXT_PUBLIC_RSVP_MESSAGE_ENTRY_ID ?? "",
   },
   closing: {
     photo: "https://placehold.co/390x500/060707/B7A8A1?text=Radifan+%26+Syifa",
