@@ -76,6 +76,18 @@ body {
   width: 100%;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/images/flowerbg.png');
+  background-repeat: repeat;
+  background-size: 480px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .cover-open {
   overflow: hidden;
   position: fixed;
