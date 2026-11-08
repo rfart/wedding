@@ -2,12 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-type TimeLeft = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-};
+type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
 function getTimeLeft(target: string): TimeLeft {
   const diff = new Date(target).getTime() - Date.now();
@@ -21,7 +16,6 @@ function getTimeLeft(target: string): TimeLeft {
 }
 
 export default function CountdownTimer({ targetDate }: { targetDate: string }) {
-  // Initialize with null to avoid Date.now() during SSR/prerender
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
@@ -29,9 +23,8 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
     const id = setInterval(() => {
       const t = getTimeLeft(targetDate);
       setTimeLeft(t);
-      if (t.days === 0 && t.hours === 0 && t.minutes === 0 && t.seconds === 0) {
+      if (t.days === 0 && t.hours === 0 && t.minutes === 0 && t.seconds === 0)
         clearInterval(id);
-      }
     }, 1000);
     return () => clearInterval(id);
   }, [targetDate]);
@@ -46,16 +39,11 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
   return (
     <div className="flex gap-3 justify-center">
       {units.map(({ label, value }) => (
-        <div
-          key={label}
-          className="flex flex-col items-center bg-white border border-beige rounded-lg px-4 py-3 min-w-[64px]"
-        >
-          <span className="font-serif text-2xl font-semibold text-stone-800 leading-none">
+        <div key={label} className="flex flex-col items-center bg-surface border border-border rounded-lg px-4 py-3 min-w-[64px]">
+          <span className="font-serif text-2xl font-semibold text-fg leading-none">
             {timeLeft ? String(value).padStart(2, "0") : "--"}
           </span>
-          <span className="text-xs text-stone-500 mt-1 uppercase tracking-wide">
-            {label}
-          </span>
+          <span className="text-xs text-fg-soft mt-1 uppercase tracking-wide">{label}</span>
         </div>
       ))}
     </div>

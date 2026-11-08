@@ -15,18 +15,12 @@ export default function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-gold text-gold hover:bg-gold hover:text-white transition-colors duration-200"
+      className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-accent text-accent hover:bg-accent hover:text-bg transition-colors duration-200"
     >
       {copied ? (
-        <>
-          <Check size={14} />
-          <span>Tersalin!</span>
-        </>
+        <><Check size={14} /><span>Tersalin!</span></>
       ) : (
-        <>
-          <Copy size={14} />
-          <span>Salin</span>
-        </>
+        <><Copy size={14} /><span>Salin</span></>
       )}
     </button>
   );

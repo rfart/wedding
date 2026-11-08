@@ -53,12 +53,11 @@ export default function Cover({ onOpen }: CoverProps) {
       onWheel={handleWheel}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#000000] text-white overflow-hidden cursor-pointer"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-bg text-fg overflow-hidden cursor-pointer"
       exit={{ y: "-100%" }}
       transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] } as Transition}
       onClick={trigger}
     >
-      {/* Background photo */}
       <Image
         src={config.heroPhoto}
         alt="Cover photo"
@@ -68,34 +67,32 @@ export default function Cover({ onOpen }: CoverProps) {
         unoptimized
       />
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center gap-5 px-8 text-center">
         <motion.p
           {...fadeUp(0.3)}
-          className="font-serif text-6xl font-light tracking-widest text-[#c9c7c7]"
+          className="font-serif text-6xl font-light tracking-widest text-fg"
         >
           {config.couple.initials}
         </motion.p>
 
         <motion.div {...fadeUp(0.6)} className="space-y-1">
-          <p className="font-serif text-xl font-medium">
+          <p className="font-serif text-xl font-medium text-fg">
             {config.couple.brideNickname}
           </p>
-          <p className="text-white/50 text-sm">&amp;</p>
-          <p className="font-serif text-xl font-medium">
+          <p className="text-fg/50 text-sm">&amp;</p>
+          <p className="font-serif text-xl font-medium text-fg">
             {config.couple.groomNickname}
           </p>
         </motion.div>
 
         <motion.p
           {...fadeUp(0.9)}
-          className="text-white/60 text-sm tracking-widest uppercase"
+          className="text-fg/60 text-sm tracking-widest uppercase"
         >
           {config.event.dateLabel}
         </motion.p>
       </div>
 
-      {/* Scroll hint */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -111,9 +108,9 @@ export default function Cover({ onOpen }: CoverProps) {
             delay: 1.8,
           } as Transition}
         >
-          <ChevronsUp size={24} className="text-white/50" />
+          <ChevronsUp size={24} className="text-fg/50" />
         </motion.div>
-        <span className="text-white/40 text-[10px] uppercase tracking-widest">
+        <span className="text-fg/40 text-[10px] uppercase tracking-widest">
           Swipe up
         </span>
       </motion.div>

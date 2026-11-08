@@ -1,25 +1,49 @@
 @import "tailwindcss";
 
-@theme inline {
-  --font-serif: var(--font-playfair), Georgia, serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-
-  /* Monochrome Ash Palette */
-  --color-ash-black:  #000000;
-  --color-ash-dark:   #272727;
-  --color-ash-mid:    #5c5959;
-  --color-ash-gray:   #969393;
-  --color-ash-light:  #c9c7c7;
-
-  /* Semantic aliases used throughout components */
-  --color-cream:      #c9c7c7;   /* lightest ash — section backgrounds */
-  --color-beige:      #969393;   /* medium ash — borders, dividers     */
-  --color-gold:       #5c5959;   /* dark ash — accent / CTA            */
-
-  --color-background: #ffffff;
-  --color-foreground: #272727;
+/* ════════════════════════════════════════════════════════════════════════════
+   RAW PALETTE — only change values here to retheme the entire site
+   ════════════════════════════════════════════════════════════════════════════ */
+:root {
+  --palette-1: #DCDBDC;   /* Diamond Stud    — lightest */
+  --palette-2: #A9A7A3;   /* Silver Grey                */
+  --palette-3: #777B78;   /* Westchester Grey            */
+  --palette-4: #474F4B;   /* New Forest                  */
+  --palette-5: #262C26;   /* Bitter Liquorice            */
+  --palette-6: #060906;   /* Black Metal     — darkest   */
 }
 
+/* ════════════════════════════════════════════════════════════════════════════
+   SEMANTIC DESIGN TOKENS — reference palette vars, never hardcode hex here
+   ════════════════════════════════════════════════════════════════════════════ */
+@theme inline {
+  --font-serif:  var(--font-playfair), Georgia, serif;
+  --font-sans:   var(--font-inter), system-ui, sans-serif;
+
+  /* Backgrounds */
+  --color-bg:        var(--palette-6);  /* page / section bg          → bg-bg        */
+  --color-bg-alt:    var(--palette-5);  /* alternate section bg        → bg-bg-alt    */
+  --color-surface:   var(--palette-4);  /* raised cards, inputs        → bg-surface   */
+  --color-border:    var(--palette-4);  /* all borders                 → border-border */
+
+  /* Accent */
+  --color-accent:    var(--palette-2);  /* CTAs, links, highlights     → *-accent     */
+
+  /* Text */
+  --color-fg:        var(--palette-1);  /* primary text                → text-fg      */
+  --color-fg-soft:   var(--palette-2);  /* secondary / body text       → text-fg-soft */
+  --color-fg-muted:  var(--palette-3);  /* labels, placeholders, hints → text-fg-muted*/
+
+  /* ── Legacy aliases so bg-cream / border-beige / text-gold still work ── */
+  --color-cream:      var(--palette-5);
+  --color-beige:      var(--palette-4);
+  --color-gold:       var(--palette-2);
+  --color-background: var(--palette-6);
+  --color-foreground: var(--palette-1);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ════════════════════════════════════════════════════════════════════════════ */
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -27,8 +51,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #ffffff;
-  color: var(--color-foreground);
+  background-color: var(--palette-6);
+  color: var(--palette-1);
   overflow-x: hidden;
   width: 100%;
 }
