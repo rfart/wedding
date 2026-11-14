@@ -1,10 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { config } from "@/config";
 import type { Wish } from "@/lib/googleSheets";
-
-const FORM_ACTION = config.rsvp.googleFormsUrl.replace(/\/viewform.*$/, "/formResponse");
 
 type Attendance = "Hadir" | "Tidak Hadir";
 
@@ -46,34 +43,18 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
     setSubmitting(true);
     try {
       const displayName = isAnon ? "Anonim" : name.trim();
-      const formBody: Record<string, string> = {
-        [config.rsvp.nameEntryId]: name.trim(),
-        [config.rsvp.attendanceEntryId]: attendance,
-      };
-      if (message.trim()) formBody[config.rsvp.messageEntryId] = message.trim();
 
-      await Promise.all([
-        fetch(FORM_ACTION, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formBody).toString(),
-        }),
-        message.trim()
-          ? fetch("/api/wishes", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ name: displayName, message: message.trim() }),
-            })
-          : Promise.resolve(),
-      ]);
+      await fetch("/api/wishes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: displayName, attendance, message: message.trim() }),
+      });
+
       setSubmitted(true);
-      if (message.trim()) {
-        setWishes((prev) => [
-          { timestamp: new Date().toISOString(), name: displayName, message: message.trim() },
-          ...prev,
-        ]);
-      }
+      setWishes((prev) => [
+        { timestamp: new Date().toISOString(), name: displayName, attendance, message: message.trim() },
+        ...prev,
+      ]);
       fetchWishes();
     } catch {
       setError("Gagal mengirim. Silakan coba lagi.");
@@ -173,9 +154,22 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
           <div className="space-y-3 max-h-80 overflow-y-auto pr-1">
             {wishes.map((w, i) => (
               <div key={i} className="bg-bg border border-border/40 rounded-lg px-4 py-3">
-                <p className="font-medium text-fg text-sm">{w.name}</p>
+                <div className="flex items-center gap-2">
+                  <p className="font-medium text-fg text-sm">{w.name}</p>
+                  {w.attendance && w.name !== "Anonim" && (
+                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                      w.attendance === "Hadir"
+                        ? "bg-accent/15 text-accent"
+                        : "bg-fg-muted/15 text-fg-muted"
+                    }`}>
+                      {w.attendance}
+                    </span>
+                  )}
+                </div>
                 <p className="text-fg-muted text-xs mt-0.5">{formatTimestamp(w.timestamp)}</p>
-                <p className="text-fg-soft text-sm mt-1">{w.message}</p>
+                {w.message && (
+                  <p className="text-fg-soft text-sm mt-1">{w.message}</p>
+                )}
               </div>
             ))}
           </div>

@@ -12,14 +12,14 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    const { name, message } = await req.json();
-    if (!name?.trim() || !message?.trim()) {
+    const { name, attendance, message } = await req.json();
+    if (!name?.trim() || !attendance?.trim()) {
       return NextResponse.json(
-        { error: "Nama dan pesan harus diisi." },
+        { error: "Nama dan konfirmasi kehadiran harus diisi." },
         { status: 400 }
       );
     }
-    await addWish(name.trim(), message.trim());
+    await addWish(name.trim(), attendance.trim(), (message ?? "").trim());
     return NextResponse.json({ success: true }, { status: 201 });
   } catch {
     return NextResponse.json(
