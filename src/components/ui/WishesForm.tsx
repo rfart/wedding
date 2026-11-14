@@ -26,7 +26,7 @@ export default function WishesForm() {
     setError("");
     if (!name.trim() || !message.trim()) { setError("Nama dan pesan wajib diisi."); return; }
     setSubmitting(true);
-    const optimistic: Wish = { timestamp: new Date().toISOString(), name: name.trim(), message: message.trim() };
+    const optimistic: Wish = { timestamp: new Date().toISOString(), name: name.trim(), attendance: "", message: message.trim() };
     setWishes((prev) => [optimistic, ...prev]);
     try {
       const res = await fetch("/api/wishes", {
