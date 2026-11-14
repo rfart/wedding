@@ -13,6 +13,7 @@ import Galeri from "@/components/sections/Galeri";
 import WeddingGift from "@/components/sections/WeddingGift";
 import RsvpWishes from "@/components/sections/RsvpWishes";
 import Penutup from "@/components/sections/Penutup";
+import MusicPlayer from "@/components/ui/MusicPlayer";
 
 function HomeContent() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +54,7 @@ function HomeContent() {
         <Penutup />
       </main>
       {isOpen && <BottomNav />}
+      <MusicPlayer isOpen={isOpen} />
 
       <AnimatePresence>
         {!isOpen && <Cover key="cover" onOpen={() => setIsOpen(true)} />}
