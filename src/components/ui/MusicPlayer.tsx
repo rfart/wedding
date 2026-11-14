@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 
@@ -8,7 +8,11 @@ interface MusicPlayerProps {
   isOpen: boolean;
 }
 
-export default function MusicPlayer({ isOpen }: MusicPlayerProps) {
+export interface MusicPlayerHandle {
+  play: () => void;
+}
+
+const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(function MusicPlayer({ isOpen }, ref) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(false);
 
@@ -23,14 +27,12 @@ export default function MusicPlayer({ isOpen }: MusicPlayerProps) {
     };
   }, []);
 
-  useEffect(() => {
-    if (!isOpen || !audioRef.current) return;
-    const audio = audioRef.current;
-    const timer = setTimeout(() => {
-      audio.play().catch(() => {});
-    }, 200);
-    return () => clearTimeout(timer);
-  }, [isOpen]);
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      if (!audioRef.current) return;
+      audioRef.current.play().catch(() => {});
+    },
+  }));
 
   const toggleMute = () => {
     if (!audioRef.current) return;
@@ -56,4 +58,6 @@ export default function MusicPlayer({ isOpen }: MusicPlayerProps) {
       )}
     </AnimatePresence>
   );
-}
+});
+
+export default MusicPlayer;

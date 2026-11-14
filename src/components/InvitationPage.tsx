@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import Cover from "@/components/sections/Cover";
 import BottomNav from "@/components/layout/BottomNav";
@@ -12,7 +12,7 @@ import Galeri from "@/components/sections/Galeri";
 import WeddingGift from "@/components/sections/WeddingGift";
 import RsvpWishes from "@/components/sections/RsvpWishes";
 import Penutup from "@/components/sections/Penutup";
-import MusicPlayer from "@/components/ui/MusicPlayer";
+import MusicPlayer, { type MusicPlayerHandle } from "@/components/ui/MusicPlayer";
 
 function toTitleCase(str: string) {
   return str.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
@@ -20,7 +20,13 @@ function toTitleCase(str: string) {
 
 export default function InvitationPage({ tamu }: { tamu: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const musicRef = useRef<MusicPlayerHandle>(null);
   const displayTamu = tamu ? toTitleCase(tamu) : "";
+
+  const handleOpen = () => {
+    musicRef.current?.play();
+    setIsOpen(true);
+  };
 
   useEffect(() => {
     // Always lock scroll when cover is present
@@ -56,10 +62,10 @@ export default function InvitationPage({ tamu }: { tamu: string }) {
         <Penutup />
       </main>
       {isOpen && <BottomNav />}
-      <MusicPlayer isOpen={isOpen} />
+      <MusicPlayer ref={musicRef} isOpen={isOpen} />
 
       <AnimatePresence>
-        {!isOpen && <Cover key="cover" tamu={displayTamu} onOpen={() => setIsOpen(true)} />}
+        {!isOpen && <Cover key="cover" tamu={displayTamu} onOpen={handleOpen} />}
       </AnimatePresence>
     </>
   );
