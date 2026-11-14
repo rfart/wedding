@@ -8,6 +8,7 @@ import { config } from "@/config";
 
 type CoverProps = {
   onOpen: () => void;
+  tamu?: string;
 };
 
 const fadeUp = (delay: number) => ({
@@ -16,7 +17,7 @@ const fadeUp = (delay: number) => ({
   transition: { duration: 0.9, delay, ease: "easeOut" } as Transition,
 });
 
-export default function Cover({ onOpen }: CoverProps) {
+export default function Cover({ onOpen, tamu }: CoverProps) {
   const touchStartY = useRef(0);
   const triggered = useRef(false);
 
@@ -108,7 +109,7 @@ export default function Cover({ onOpen }: CoverProps) {
       </motion.div>
 
       {/* Bottom: dark content panel */}
-      <div className="relative flex-1 bg-bg flex flex-col items-center justify-center gap-3 px-16 pb-16 text-center">
+      <div className="relative flex-1 bg-bg flex flex-col items-center justify-center gap-3 px-16 pb-24 text-center">
 
         {/* "Dear Family & Friends" */}
         <motion.p
@@ -170,10 +171,10 @@ export default function Cover({ onOpen }: CoverProps) {
         </motion.p>
         <motion.p
           {...fadeUp(1.05)}
-          className="font-sans text-fg/60 -mt-2"
-          style={{ fontSize: "var(--font-size-label)" }}
+          className={`font-sans -mt-2 ${tamu ? "text-fg/90" : "text-fg/60"}`}
+          style={{ fontSize: tamu ? "var(--font-size-body)" : "var(--font-size-label)" }}
         >
-          Nama Tamu
+          {tamu ? tamu : "Nama Tamu"}
         </motion.p>
 
         {/* Date */}
