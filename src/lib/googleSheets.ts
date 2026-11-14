@@ -27,7 +27,7 @@ async function fetchWishes(): Promise<Wish[]> {
   const sheets = google.sheets({ version: "v4", auth });
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: sheetId,
-    range: "Sheet1!A2:C",
+    range: "Wishes!A2:C",
   });
 
   const rows = res.data.values ?? [];
@@ -50,7 +50,7 @@ export async function addWish(name: string, message: string): Promise<void> {
   const sheets = google.sheets({ version: "v4", auth });
   await sheets.spreadsheets.values.append({
     spreadsheetId: sheetId,
-    range: "Sheet1!A:C",
+    range: "Wishes!A:C",
     valueInputOption: "USER_ENTERED",
     requestBody: {
       values: [[new Date().toISOString(), name, message]],

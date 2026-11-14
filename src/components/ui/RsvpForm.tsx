@@ -8,8 +8,18 @@ const FORM_ACTION = config.rsvp.googleFormsUrl.replace(/\/viewform.*$/, "/formRe
 
 type Attendance = "Hadir" | "Tidak Hadir";
 
+function formatTimestamp(iso: string): string {
+  if (!iso) return "";
+  return new Intl.DateTimeFormat("id-ID", {
+    weekday: "long", day: "numeric", month: "long", year: "numeric",
+    hour: "2-digit", minute: "2-digit", second: "2-digit",
+    hour12: false, timeZone: "Asia/Jakarta",
+  }).format(new Date(iso));
+}
+
 export default function RsvpForm({ tamu }: { tamu: string }) {
   const [name, setName] = useState(tamu);
+  const [isAnon, setIsAnon] = useState(false);
   const [attendance, setAttendance] = useState<Attendance | "">("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -35,6 +45,7 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
 
     setSubmitting(true);
     try {
+      const displayName = isAnon ? "Anonim" : name.trim();
       const formBody: Record<string, string> = {
         [config.rsvp.nameEntryId]: name.trim(),
         [config.rsvp.attendanceEntryId]: attendance,
@@ -52,12 +63,18 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
           ? fetch("/api/wishes", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ name: name.trim(), message: message.trim() }),
+              body: JSON.stringify({ name: displayName, message: message.trim() }),
             })
           : Promise.resolve(),
       ]);
       setSubmitted(true);
-      await fetchWishes();
+      if (message.trim()) {
+        setWishes((prev) => [
+          { timestamp: new Date().toISOString(), name: displayName, message: message.trim() },
+          ...prev,
+        ]);
+      }
+      fetchWishes();
     } catch {
       setError("Gagal mengirim. Silakan coba lagi.");
     } finally {
@@ -85,7 +102,8 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
             <label className="block text-sm font-medium text-fg-soft mb-1">Nama Tamu</label>
             <input
               type="text" value={name} onChange={(e) => setName(e.target.value)}
-              placeholder="Masukkan nama Anda" className={inputClass} maxLength={80}
+              placeholder="Masukkan nama Anda" className={`${inputClass} ${isAnon ? "opacity-50 cursor-not-allowed" : ""}`}
+              maxLength={80} disabled={isAnon}
             />
           </div>
 
@@ -128,6 +146,14 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
             />
           </div>
 
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" checked={isAnon} onChange={(e) => setIsAnon(e.target.checked)} className="sr-only" />
+            <span className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors ${isAnon ? "bg-accent border-accent" : "border-border"}`}>
+              {isAnon && <span className="w-2 h-2 bg-bg rounded-sm" />}
+            </span>
+            <span className="text-sm text-fg-soft">Kirim sebagai Anonim</span>
+          </label>
+
           {error && <p className="text-red-400 text-sm">{error}</p>}
 
           <button
@@ -148,7 +174,8 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
             {wishes.map((w, i) => (
               <div key={i} className="bg-bg border border-border/40 rounded-lg px-4 py-3">
                 <p className="font-medium text-fg text-sm">{w.name}</p>
-                <p className="text-fg-soft text-sm mt-0.5">{w.message}</p>
+                <p className="text-fg-muted text-xs mt-0.5">{formatTimestamp(w.timestamp)}</p>
+                <p className="text-fg-soft text-sm mt-1">{w.message}</p>
               </div>
             ))}
           </div>
