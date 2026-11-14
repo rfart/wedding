@@ -17,19 +17,18 @@ const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(function Mus
   const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
-    const audio = new Audio("/audio/background.mp3");
-    audio.loop = true;
-    audio.preload = "auto";
-    audioRef.current = audio;
     return () => {
-      audio.pause();
-      audio.src = "";
+      audioRef.current?.pause();
     };
   }, []);
 
   useImperativeHandle(ref, () => ({
     play: () => {
-      if (!audioRef.current) return;
+      if (!audioRef.current) {
+        const audio = new Audio("/audio/background.mp3");
+        audio.loop = true;
+        audioRef.current = audio;
+      }
       audioRef.current.play().catch(() => {});
     },
   }));
