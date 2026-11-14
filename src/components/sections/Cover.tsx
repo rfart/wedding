@@ -122,8 +122,15 @@ export default function Cover({ onOpen }: CoverProps) {
         {/* Bride name */}
         <motion.p
           {...fadeUp(0.5)}
-          className="text-fg leading-none"
-          style={{ fontSize: "var(--font-size-display)", fontFamily: "var(--font-armelie)" }}
+          className="text-fg"
+          style={{
+            fontSize: "64px",
+            fontFamily: "var(--font-italianno)",
+            fontWeight: 400,
+            lineHeight: "36px",
+            letterSpacing: "3.20px",
+            wordWrap: "break-word",
+          }}
         >
           {config.couple.brideNickname}
         </motion.p>
@@ -140,8 +147,15 @@ export default function Cover({ onOpen }: CoverProps) {
         {/* Groom name */}
         <motion.p
           {...fadeUp(0.8)}
-          className="text-fg leading-none"
-          style={{ fontSize: "var(--font-size-display)", fontFamily: "var(--font-armelie)" }}
+          className="text-fg"
+          style={{
+            fontSize: "64px",
+            fontFamily: "var(--font-italianno)",
+            fontWeight: 400,
+            lineHeight: "36px",
+            letterSpacing: "3.20px",
+            wordWrap: "break-word",
+          }}
         >
           {config.couple.groomNickname}
         </motion.p>

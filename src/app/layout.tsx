@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Italianno } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -12,6 +12,12 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+});
+
+const italianno = Italianno({
+  variable: "--font-italianno",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="id" className={`${playfair.variable} ${inter.variable} ${italianno.variable}`}>
       <body className="min-h-full antialiased">{children}</body>
     </html>
   );
