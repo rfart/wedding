@@ -12,7 +12,7 @@ const itemVariants: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1.0, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -32,7 +32,7 @@ function TimelineItem({ item, i }: { item: (typeof config.loveStory)[0]; i: numb
       <motion.div
         initial={{ scale: 0 }}
         animate={inView ? { scale: 1 } : { scale: 0 }}
-        transition={{ type: "spring", stiffness: 350, damping: 20, delay: 0.15 }}
+        transition={{ type: "spring", stiffness: 350, damping: 20, delay: 0.3 }}
         className="absolute left-2.5 top-1 w-3.5 h-3.5 rounded-full bg-accent border-2 border-bg shadow-sm"
       />
       <div className="space-y-2">
@@ -76,7 +76,7 @@ export default function LoveStory() {
                 visible: {
                   scaleY: 1,
                   opacity: 1,
-                  transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
+                  transition: { duration: 1.7, ease: [0.22, 1, 0.36, 1] },
                 },
               }}
               className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-accent/40 to-border origin-top"

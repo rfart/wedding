@@ -14,7 +14,7 @@ type CoverProps = {
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.9, delay, ease: "easeOut" } as Transition,
+  transition: { duration: 1.3, delay, ease: "easeOut" } as Transition,
 });
 
 export default function Cover({ onOpen, tamu }: CoverProps) {
@@ -79,7 +79,7 @@ export default function Cover({ onOpen, tamu }: CoverProps) {
         style={{ top: "55vh", bottom: 0, display: "flex", alignItems: "center", translateX: "-50%" }}
         initial={{ x: "-100%", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1.0, ease: [0.22, 1, 0.36, 1] } as Transition}
+        transition={{ delay: 0.5, duration: 1.5, ease: [0.22, 1, 0.36, 1] } as Transition}
       >
         <Image
           src="/images/flower.png"
@@ -96,7 +96,7 @@ export default function Cover({ onOpen, tamu }: CoverProps) {
         style={{ top: "55vh", bottom: 0, display: "flex", alignItems: "center", translateX: "50%" }}
         initial={{ x: "100%", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1.0, ease: [0.22, 1, 0.36, 1] } as Transition}
+        transition={{ delay: 0.5, duration: 1.5, ease: [0.22, 1, 0.36, 1] } as Transition}
       >
         <Image
           src="/images/flower.png"
@@ -213,16 +213,16 @@ export default function Cover({ onOpen, tamu }: CoverProps) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 0.8 } as Transition}
+          transition={{ delay: 2.4, duration: 1.2 } as Transition}
           className="absolute bottom-6 flex flex-col items-center gap-1"
         >
           <motion.div
             animate={{ y: [0, -6, 0] }}
             transition={{
               repeat: Infinity,
-              duration: 1.4,
+              duration: 2.0,
               ease: "easeInOut",
-              delay: 2.0,
+              delay: 2.8,
             } as Transition}
           >
             <ChevronsUp size={24} className="text-fg/50" />

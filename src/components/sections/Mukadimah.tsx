@@ -36,7 +36,7 @@ export default function Mukadimah() {
                   visible: {
                     scaleX: 1,
                     opacity: 1,
-                    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+                    transition: { duration: 1.3, ease: [0.22, 1, 0.36, 1] },
                   },
                 }}
                 className="w-16 h-px bg-gradient-to-r from-transparent via-accent to-transparent origin-center"

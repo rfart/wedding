@@ -9,10 +9,10 @@ export const sectionContainerVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
+      duration: 1.1,
       ease: [0.22, 1, 0.36, 1],
-      staggerChildren: 0.14,
-      delayChildren: 0.08,
+      staggerChildren: 0.22,
+      delayChildren: 0.2,
     },
   },
 };
@@ -24,7 +24,7 @@ export const itemFadeUpVariants: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.65,
+      duration: 1.0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -36,7 +36,7 @@ export const scaleItemVariants: Variants = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.65,
+      duration: 1.0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -70,7 +70,7 @@ export function SectionHeader({
             visible: {
               scaleX: 1,
               opacity: 1,
-              transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+              transition: { duration: 1.3, ease: [0.22, 1, 0.36, 1] },
             },
           }}
           className="h-px w-20 bg-gradient-to-r from-transparent via-accent to-transparent origin-center"

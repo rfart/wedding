@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import SectionWrapper, { SectionHeader } from "@/components/layout/SectionWrapper";
 import { config } from "@/config";
 
@@ -13,7 +14,7 @@ const brideVariants: Variants = {
     x: 0,
     scale: 1,
     transition: {
-      duration: 0.75,
+      duration: 1.2,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -26,7 +27,7 @@ const groomVariants: Variants = {
     x: 0,
     scale: 1,
     transition: {
-      duration: 0.75,
+      duration: 1.2,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -41,7 +42,7 @@ const ampersandVariants: Variants = {
       type: "spring",
       stiffness: 300,
       damping: 20,
-      delay: 0.2,
+      delay: 0.4,
     },
   },
 };
@@ -65,8 +66,14 @@ function ProfileCard({
   childLabel: string;
   variants: Variants;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
+
   return (
     <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
       variants={variants}
       className="flex flex-col items-center gap-4 text-center w-full sm:w-auto"
     >
@@ -129,6 +136,8 @@ export default function ProfilMempelai() {
             />
 
             <motion.div
+              initial="hidden"
+              animate="visible"
               variants={ampersandVariants}
               className="flex items-center justify-center sm:pt-24"
             >

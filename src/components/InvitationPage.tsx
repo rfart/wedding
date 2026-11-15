@@ -13,6 +13,7 @@ import WeddingGift from "@/components/sections/WeddingGift";
 import RsvpWishes from "@/components/sections/RsvpWishes";
 import Penutup from "@/components/sections/Penutup";
 import MusicPlayer, { type MusicPlayerHandle } from "@/components/ui/MusicPlayer";
+import FadeContent from "@/components/ui/FadeContent";
 
 function toTitleCase(str: string) {
   return str.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
@@ -52,14 +53,30 @@ export default function InvitationPage({ tamu }: { tamu: string }) {
     <>
       {/* Main content always rendered underneath so it's visible as cover slides away */}
       <main>
-        <Mukadimah />
-        <ProfilMempelai />
-        <DetailAcara />
-        <LoveStory />
-        <Galeri />
-        <WeddingGift />
-        <RsvpWishes tamu={displayTamu} />
-        <Penutup />
+        <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
+          <Mukadimah />
+        </FadeContent>
+        <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
+          <ProfilMempelai />
+        </FadeContent>
+        <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
+          <DetailAcara />
+        </FadeContent>
+        <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
+          <LoveStory />
+        </FadeContent>
+        <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
+          <Galeri />
+        </FadeContent>
+        <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
+          <WeddingGift />
+        </FadeContent>
+        <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
+          <RsvpWishes tamu={displayTamu} />
+        </FadeContent>
+        <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
+          <Penutup />
+        </FadeContent>
       </main>
       {isOpen && <BottomNav />}
       <MusicPlayer ref={musicRef} isOpen={isOpen} />
