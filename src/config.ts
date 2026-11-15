@@ -82,15 +82,15 @@ export const config = {
     accounts: [
       {
         type: "Bank",
-        bankName: "[Nama Bank]",
-        accountNumber: "[Nomor Rekening]",
-        accountName: "[Nama Pemilik Rekening]",
+        bankName: "BRI",
+        accountNumber: "005101163523502",
+        accountName: "RADIFAN AJI KARAMI",
       },
       {
-        type: "E-Wallet",
-        bankName: "DANA / OVO / GoPay",
-        accountNumber: "[Nomor E-Wallet]",
-        accountName: "[Nama Pemilik]",
+        type: "Bank",
+        bankName: "BCA",
+        accountNumber: "7610762781",
+        accountName: "SYIFA RAHMATIKA",
       },
     ],
   },
