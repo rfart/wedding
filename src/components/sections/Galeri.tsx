@@ -33,8 +33,8 @@ export default function Galeri() {
                     src={img.src}
                     alt={img.alt}
                     fill
+                    sizes="(max-width: 640px) 50vw, 300px"
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                    unoptimized
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>

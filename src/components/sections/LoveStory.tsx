@@ -18,7 +18,7 @@ const itemVariants: Variants = {
 
 function TimelineItem({ item, i }: { item: (typeof config.loveStory)[0]; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: false, margin: "0px 0px -10% 0px" });
+  const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
 
   return (
     <motion.div
@@ -48,8 +48,8 @@ function TimelineItem({ item, i }: { item: (typeof config.loveStory)[0]; i: numb
               src={item.photo}
               alt={item.title}
               fill
+              sizes="(max-width: 640px) 100vw, 384px"
               className="object-cover object-top"
-              unoptimized
             />
           </div>
         )}

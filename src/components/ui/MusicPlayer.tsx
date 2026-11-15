@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
-import GlassSurface from "./GlassSurface";
 
 interface MusicPlayerProps {
   isOpen: boolean;
@@ -58,22 +57,13 @@ const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(function Mus
           transition={{ delay: 1, duration: 0.3 }}
           className={`fixed bottom-24 right-6 z-50${hasError ? " animate-pulse" : ""}`}
         >
-          <GlassSurface
-            width={40}
-            height={40}
-            borderRadius={20}
-            distortionScale={-80}
-            displace={0.3}
-            backgroundOpacity={0.1}
+          <button
+            onClick={toggleMute}
+            aria-label={hasError ? "Retry music" : isMuted ? "Unmute music" : "Mute music"}
+            className="w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-md bg-white/20 border border-white/30 text-[var(--color-fg)]"
           >
-            <button
-              onClick={toggleMute}
-              aria-label={hasError ? "Retry music" : isMuted ? "Unmute music" : "Mute music"}
-              className="w-full h-full flex items-center justify-center text-[var(--color-fg)]"
-            >
-              {hasError || isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-            </button>
-          </GlassSurface>
+            {hasError || isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+          </button>
         </motion.div>
       )}
     </AnimatePresence>

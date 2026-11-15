@@ -67,7 +67,7 @@ export default function Cover({ onOpen, tamu }: CoverProps) {
           fill
           className="object-cover object-top"
           priority
-          unoptimized
+          sizes="100vw"
         />
         {/* Gradient fading photo into dark bg below */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-bg" />
@@ -88,7 +88,6 @@ export default function Cover({ onOpen, tamu }: CoverProps) {
           height={1000}
           className="opacity-70"
           style={{ transform: "scaleX(-1)" }}
-          unoptimized
         />
       </motion.div>
       <motion.div
@@ -104,7 +103,6 @@ export default function Cover({ onOpen, tamu }: CoverProps) {
           width={200}
           height={1000}
           className="opacity-70"
-          unoptimized
         />
       </motion.div>
 

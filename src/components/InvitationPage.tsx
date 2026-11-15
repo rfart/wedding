@@ -2,22 +2,22 @@
 
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
 import Cover from "@/components/sections/Cover";
 import BottomNav from "@/components/layout/BottomNav";
-import Mukadimah from "@/components/sections/Mukadimah";
-import ProfilMempelai from "@/components/sections/ProfilMempelai";
-import DetailAcara from "@/components/sections/DetailAcara";
-import LoveStory from "@/components/sections/LoveStory";
-import Galeri from "@/components/sections/Galeri";
-import WeddingGift from "@/components/sections/WeddingGift";
-import RsvpWishes from "@/components/sections/RsvpWishes";
-import Penutup from "@/components/sections/Penutup";
 import MusicPlayer, { type MusicPlayerHandle } from "@/components/ui/MusicPlayer";
 import FadeContent from "@/components/ui/FadeContent";
 import FlowerDivider from "@/components/ui/FlowerDivider";
-import dynamic from "next/dynamic";
 
 const DoveAnimation = dynamic(() => import("@/components/ui/DoveAnimation"), { ssr: false });
+const Mukadimah = dynamic(() => import("@/components/sections/Mukadimah"));
+const ProfilMempelai = dynamic(() => import("@/components/sections/ProfilMempelai"));
+const DetailAcara = dynamic(() => import("@/components/sections/DetailAcara"));
+const LoveStory = dynamic(() => import("@/components/sections/LoveStory"));
+const Galeri = dynamic(() => import("@/components/sections/Galeri"));
+const WeddingGift = dynamic(() => import("@/components/sections/WeddingGift"));
+const RsvpWishes = dynamic(() => import("@/components/sections/RsvpWishes"));
+const Penutup = dynamic(() => import("@/components/sections/Penutup"));
 
 function toTitleCase(str: string) {
   return str.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
