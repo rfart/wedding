@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
+import GlassSurface from "./GlassSurface";
 
 interface MusicPlayerProps {
   isOpen: boolean;
@@ -49,18 +50,31 @@ const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(function Mus
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.button
+        <motion.div
           key="music-toggle"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ delay: 1, duration: 0.3 }}
-          onClick={toggleMute}
-          aria-label={hasError ? "Retry music" : isMuted ? "Unmute music" : "Mute music"}
-          className={`fixed bottom-24 right-6 z-50 w-10 h-10 rounded-full flex items-center justify-center bg-[var(--color-surface)] border border-[var(--color-accent)] text-[var(--color-fg)] shadow-md${hasError ? " animate-pulse" : ""}`}
+          className={`fixed bottom-24 right-6 z-50${hasError ? " animate-pulse" : ""}`}
         >
-          {hasError || isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-        </motion.button>
+          <GlassSurface
+            width={40}
+            height={40}
+            borderRadius={20}
+            distortionScale={-80}
+            displace={0.3}
+            backgroundOpacity={0.1}
+          >
+            <button
+              onClick={toggleMute}
+              aria-label={hasError ? "Retry music" : isMuted ? "Unmute music" : "Mute music"}
+              className="w-full h-full flex items-center justify-center text-[var(--color-fg)]"
+            >
+              {hasError || isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            </button>
+          </GlassSurface>
+        </motion.div>
       )}
     </AnimatePresence>
   );
