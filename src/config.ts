@@ -69,30 +69,12 @@ export const config = {
     },
   ],
   gallery: [
-    {
-      src: "https://placehold.co/400x600/222122/B7A8A1?text=Gallery+1",
-      alt: "Foto Pre-Wedding 1",
-    },
-    {
-      src: "https://placehold.co/400x400/141313/B7A8A1?text=Gallery+2",
-      alt: "Foto Pre-Wedding 2",
-    },
-    {
-      src: "https://placehold.co/400x500/5D5148/B7A8A1?text=Gallery+3",
-      alt: "Foto Pre-Wedding 3",
-    },
-    {
-      src: "https://placehold.co/400x600/060707/B7A8A1?text=Gallery+4",
-      alt: "Foto Pre-Wedding 4",
-    },
-    {
-      src: "https://placehold.co/400x400/222122/B7A8A1?text=Gallery+5",
-      alt: "Foto Pre-Wedding 5",
-    },
-    {
-      src: "https://placehold.co/400x500/222122/B7A8A1?text=Gallery+6",
-      alt: "Foto Pre-Wedding 6",
-    },
+    { src: "/images/gallery-1.jpg", alt: "Foto Pre-Wedding 1" },
+    { src: "/images/gallery-2.jpg", alt: "Foto Pre-Wedding 2" },
+    { src: "/images/gallery-3.jpg", alt: "Foto Pre-Wedding 3" },
+    { src: "/images/gallery-4.jpg", alt: "Foto Pre-Wedding 4" },
+    { src: "/images/gallery-5.jpg", alt: "Foto Pre-Wedding 5" },
+    { src: "/images/gallery-6.jpg", alt: "Foto Pre-Wedding 6" },
   ],
   gift: {
     message:
