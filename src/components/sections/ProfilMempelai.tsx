@@ -67,7 +67,7 @@ function ProfileCard({
   variants: Variants;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
+  const inView = useInView(ref, { once: false, margin: "0px 0px -10% 0px" });
 
   return (
     <motion.div

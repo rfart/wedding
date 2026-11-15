@@ -111,7 +111,7 @@ export default function SectionWrapper({
   variants?: Variants;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -12% 0px" });
+  const inView = useInView(ref, { once: false, margin: "0px 0px -12% 0px" });
 
   return (
     <motion.div
