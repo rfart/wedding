@@ -15,6 +15,9 @@ import Penutup from "@/components/sections/Penutup";
 import MusicPlayer, { type MusicPlayerHandle } from "@/components/ui/MusicPlayer";
 import FadeContent from "@/components/ui/FadeContent";
 import FlowerDivider from "@/components/ui/FlowerDivider";
+import dynamic from "next/dynamic";
+
+const DoveAnimation = dynamic(() => import("@/components/ui/DoveAnimation"), { ssr: false });
 
 function toTitleCase(str: string) {
   return str.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
@@ -92,6 +95,7 @@ export default function InvitationPage({ tamu }: { tamu: string }) {
       <AnimatePresence>
         {!isOpen && <Cover key="cover" tamu={displayTamu} onOpen={handleOpen} />}
       </AnimatePresence>
+      <DoveAnimation isOpen={isOpen} />
     </>
   );
 }
