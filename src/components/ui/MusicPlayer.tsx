@@ -15,26 +15,33 @@ export interface MusicPlayerHandle {
 const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(function MusicPlayer({ isOpen }, ref) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    const audio = new Audio("/audio/background.mp3");
+    audio.loop = true;
+    audio.preload = "auto";
+    audioRef.current = audio;
     return () => {
-      audioRef.current?.pause();
+      audio.pause();
     };
   }, []);
 
   useImperativeHandle(ref, () => ({
     play: () => {
-      if (!audioRef.current) {
-        const audio = new Audio("/audio/background.mp3");
-        audio.loop = true;
-        audioRef.current = audio;
-      }
-      audioRef.current.play().catch(() => {});
+      audioRef.current?.play().catch(() => {
+        setHasError(true);
+      });
     },
   }));
 
   const toggleMute = () => {
     if (!audioRef.current) return;
+    if (hasError) {
+      audioRef.current.play().catch(() => {});
+      setHasError(false);
+      return;
+    }
     audioRef.current.muted = !audioRef.current.muted;
     setIsMuted((prev) => !prev);
   };
@@ -49,10 +56,10 @@ const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(function Mus
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ delay: 1, duration: 0.3 }}
           onClick={toggleMute}
-          aria-label={isMuted ? "Unmute music" : "Mute music"}
-          className="fixed bottom-24 right-6 z-50 w-10 h-10 rounded-full flex items-center justify-center bg-[var(--color-surface)] border border-[var(--color-accent)] text-[var(--color-fg)] shadow-md"
+          aria-label={hasError ? "Retry music" : isMuted ? "Unmute music" : "Mute music"}
+          className={`fixed bottom-24 right-6 z-50 w-10 h-10 rounded-full flex items-center justify-center bg-[var(--color-surface)] border border-[var(--color-accent)] text-[var(--color-fg)] shadow-md${hasError ? " animate-pulse" : ""}`}
         >
-          {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+          {hasError || isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </motion.button>
       )}
     </AnimatePresence>
