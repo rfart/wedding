@@ -1,66 +1,57 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
+import { X } from "lucide-react";
 import { useEffect, useCallback } from "react";
+import dynamic from "next/dynamic";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const DepthCarousel = dynamic(() => import("./DepthCarousel"), { ssr: false }) as any;
 
 type LightboxProps = {
   images: { src: string; alt: string }[];
   currentIndex: number;
   onClose: () => void;
-  onPrev: () => void;
-  onNext: () => void;
 };
 
-export default function Lightbox({ images, currentIndex, onClose, onPrev, onNext }: LightboxProps) {
+export default function Lightbox({ images, currentIndex, onClose }: LightboxProps) {
   const handleKey = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") onClose();
-    if (e.key === "ArrowLeft") onPrev();
-    if (e.key === "ArrowRight") onNext();
-  }, [onClose, onPrev, onNext]);
+  }, [onClose]);
 
   useEffect(() => {
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
   }, [handleKey]);
 
+  const items = images.map((img) => ({ image: img.src, alt: img.alt }));
+
   return (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-bg/95 flex items-center justify-center"
+        className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
         onClick={onClose}
       >
-        <button className="absolute top-4 right-4 text-fg p-2 hover:text-accent transition-colors" onClick={onClose}>
+        <button
+          className="absolute top-4 right-4 z-[3100] text-white p-2 hover:text-white/70 transition-colors"
+          onClick={onClose}
+        >
           <X size={28} />
         </button>
-        <button
-          className="absolute left-3 text-fg p-2 hover:text-accent transition-colors"
-          onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        >
-          <ChevronLeft size={36} />
-        </button>
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.25 }}
-          className="relative max-w-sm w-full mx-16 aspect-[3/4]"
+        <div
+          className="w-full h-full"
           onClick={(e) => e.stopPropagation()}
         >
-          <Image
-            src={images[currentIndex].src} alt={images[currentIndex].alt}
-            fill className="object-cover rounded-lg" unoptimized
+          <DepthCarousel
+            items={items}
+            initialIndex={currentIndex}
+            cardWidth={260}
+            cardHeight={360}
+            autoplay={false}
+            loop={true}
+            tiltDirection="right"
           />
-        </motion.div>
-        <button
-          className="absolute right-3 text-fg p-2 hover:text-accent transition-colors"
-          onClick={(e) => { e.stopPropagation(); onNext(); }}
-        >
-          <ChevronRight size={36} />
-        </button>
-        <div className="absolute bottom-6 text-fg/60 text-sm">
-          {currentIndex + 1} / {images.length}
         </div>
       </motion.div>
     </AnimatePresence>

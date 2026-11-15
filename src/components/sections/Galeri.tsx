@@ -11,11 +11,6 @@ export default function Galeri() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const images = config.gallery;
 
-  const prev = () =>
-    setLightboxIndex((i) => (i === null ? 0 : (i - 1 + images.length) % images.length));
-  const next = () =>
-    setLightboxIndex((i) => (i === null ? 0 : (i + 1) % images.length));
-
   return (
     <section id="galeri" className="bg-bg-alt py-16 px-6 relative overflow-hidden">
       <SectionWrapper>
@@ -54,8 +49,6 @@ export default function Galeri() {
           images={images}
           currentIndex={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
-          onPrev={prev}
-          onNext={next}
         />
       )}
     </section>
