@@ -11,13 +11,12 @@ export default function Penutup() {
       <SectionWrapper>
         <div className="max-w-sm mx-auto space-y-8 text-center">
           <SectionItem>
-            <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-xl border border-border/60">
+            <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border border-border/60">
               <Image
                 src={config.closing.photo}
                 alt="Closing photo"
                 fill
-                className="object-cover"
-                unoptimized
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>

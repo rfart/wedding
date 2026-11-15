@@ -101,7 +101,7 @@ export const config = {
     messageEntryId: process.env.NEXT_PUBLIC_RSVP_MESSAGE_ENTRY_ID ?? "",
   },
   closing: {
-    photo: "https://placehold.co/390x500/060707/B7A8A1?text=Radifan+%26+Syifa",
+    photo: "/images/closing.jpeg",
     message:
       "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.",
   },
