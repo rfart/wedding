@@ -70,14 +70,23 @@ function ProfileCard({
       variants={variants}
       className="flex flex-col items-center gap-4 text-center w-full sm:w-auto"
     >
-      <div className="relative w-48 h-60 sm:w-40 sm:h-52 rounded-xl overflow-hidden shadow-lg border border-border/60 mx-auto group">
+      <div className="relative w-48 h-60 sm:w-40 sm:h-52 mx-auto group bg-fg p-3">
+        <div className="relative w-full h-full overflow-hidden">
+          <Image
+            src={photo}
+            alt={fullName}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+        </div>
         <Image
-          src={photo}
-          alt={fullName}
+          src="/images/border.png"
+          alt=""
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-fill pointer-events-none"
+          style={{ mixBlendMode: "multiply" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
       </div>
       <div className="space-y-1">
         <p className="text-fg-muted text-xs uppercase tracking-widest">{role}</p>
