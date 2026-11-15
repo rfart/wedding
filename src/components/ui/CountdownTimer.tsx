@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Counter from "./Counter";
 
 type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
@@ -40,8 +41,15 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
     <div className="flex gap-3 justify-center">
       {units.map(({ label, value }) => (
         <div key={label} className="flex flex-col items-center bg-surface border border-border rounded-lg px-4 py-3 min-w-[64px]">
-          <span className="font-serif text-2xl font-semibold text-fg leading-none">
-            {timeLeft ? String(value).padStart(2, "0") : "--"}
+          <span className="font-serif text-2xl text-fg leading-none">
+            <Counter
+              value={timeLeft ? value : 0}
+              fontSize="inherit"
+              fontWeight={600}
+              duration={0.9}
+              minDigits={2}
+              textColor="inherit"
+            />
           </span>
           <span className="text-xs text-fg-soft mt-1 uppercase tracking-wide">{label}</span>
         </div>
