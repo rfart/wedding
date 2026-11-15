@@ -8,14 +8,14 @@ export const config = {
       fatherName: "Dr(c). Slamet Aji Pamungkas, M.Eng.",
       motherName: "Martini",
       instagram: "https://www.instagram.com/radifanaji",
-      photo: "https://placehold.co/400x500/141313/B7A8A1?text=Radifan",
+      photo: "/images/radifan.jpeg",
     },
     bride: {
       fullName: "Syifa Rahmatika, S.M.",
       fatherName: "Alm. Sarwo Utomo",
       motherName: "Rodiah",
       instagram: "https://www.instagram.com/syifarahmatika_",
-      photo: "https://placehold.co/400x500/222122/B7A8A1?text=Syifa",
+      photo: "/images/syifa.jpeg",
     },
   },
   event: {
