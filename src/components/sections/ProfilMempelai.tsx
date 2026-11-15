@@ -75,7 +75,7 @@ function ProfileCard({
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={variants}
-      className="flex flex-col items-center gap-4 text-center w-full sm:w-auto"
+      className="flex flex-col items-center gap-4 text-center w-full sm:w-40"
     >
       <div className="relative w-48 h-60 sm:w-40 sm:h-52 mx-auto group bg-fg p-3">
         <div className="relative w-full h-full overflow-hidden">
