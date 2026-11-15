@@ -57,7 +57,7 @@ export default function LoveStory() {
                           src={item.photo}
                           alt={item.title}
                           fill
-                          className="object-cover"
+                          className="object-cover object-top"
                           unoptimized
                         />
                       </div>

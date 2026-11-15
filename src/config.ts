@@ -40,32 +40,32 @@ export const config = {
   heroPhoto: "/images/placeholder.jpg",
   loveStory: [
     {
-      year: "2020",
+      year: "2023",
       title: "Pertemuan Pertama",
       description:
-        "[Cerita singkat tentang pertemuan pertama Radifan dan Syifa. Di mana, kapan, dan bagaimana kisah indah ini dimulai.]",
-      photo: "https://placehold.co/400x300/222122/B7A8A1?text=Love+Story+1",
+        "Semua berawal di tahun 2023. Siapa sangka, perjumpaan yang sederhana justru menjadi titik balik yang mempertemukan langkah kami dalam satu cerita yang sama.",
+      photo: "/images/love-story-1.jpeg",
     },
     {
-      year: "2021",
-      title: "Mengenal Lebih Dekat",
+      year: "2024",
+      title: "Sefrekuensi",
       description:
-        "[Cerita tentang proses saling mengenal, momen-momen spesial yang dilalui bersama oleh Radifan dan Syifa.]",
-      photo: "https://placehold.co/400x300/141313/B7A8A1?text=Love+Story+2",
+        "Dari luar mungkin kita terlihat beda, tapi aslinya kita itu sefrekuensi dan sama-sama punya sisi konyol yang kadang bikin ketawa sendiri. Uniknya, kekonyolan itu justru nggak bikin ilfil, malah bikin hari-hari makin berwarna buat ngelewatin berbagai rintangan hidup.",
+      photo: "/images/love-story-2.jpeg",
     },
     {
       year: "2025",
-      title: "Lamaran",
+      title: "Tumbuh Bersama",
       description:
-        "[Cerita tentang momen lamaran yang tak terlupakan dan keputusan untuk bersatu selamanya dalam ikatan suci pernikahan.]",
-      photo: "https://placehold.co/400x300/222122/B7A8A1?text=Love+Story+3",
+        "Dulu Syifa lidahnya lokak banget nggak suka makanan elit hahahah, contohnya spaghetti, matcha dan beberapa makanan lainnya. Tapi berkat Ifan yang selalu maksa buat cobain hal baru dan terus mengajak mencoba, siapa sangka sekarang matcha justru jadi minuman favorit Syifa 🥰 Begitu juga sebaliknya, banyak hal dalam hidup Ifan yang perlahan-lahan terbangun dan tertata berkat kehadiran serta dukungan Syifa 🫶🏻",
+      photo: "/images/love-story-3.jpeg",
     },
     {
       year: "2026",
       title: "Menuju Pelaminan",
       description:
-        "[Cerita persiapan menuju hari pernikahan di 6 Desember 2026, penuh suka cita dan doa dari keluarga serta orang-orang terkasih.]",
-      photo: "https://placehold.co/400x300/5D5148/B7A8A1?text=Love+Story+4",
+        "Melewati berbagai fase kehidupan bersama, dari jatuh bangunnya perjuangan hingga kebiasaan-kebiasaan kecil yang menyatukan, membuat kami yakin. Kini kami siap melangkah ke babak hidup yang baru, merangkai masa depan dan cerita-cerita konyol lainnya dalam ikatan pernikahan.",
+      photo: "/images/love-story-4.jpeg",
     },
   ],
   gallery: [
