@@ -63,7 +63,7 @@ function TimelineItem({ item, i }: { item: (typeof config.loveStory)[0]; i: numb
 
 export default function LoveStory() {
   return (
-    <section className="bg-bg py-16 px-6 relative overflow-hidden">
+    <section className="py-16 px-6 relative overflow-hidden">
       <SectionWrapper>
         <div className="max-w-sm mx-auto space-y-10">
           <SectionHeader badge="Perjalanan Cinta" title="Love Story" />

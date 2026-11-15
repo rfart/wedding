@@ -12,52 +12,66 @@
    RAW PALETTE — only change values here to retheme the entire site
    ════════════════════════════════════════════════════════════════════════════ */
 :root {
-  --palette-1: #B7A8A1;   /* Riveter Rose    — lightest  */
-  --palette-2: #8C796E;   /* Cedar Plank                 */
-  --palette-3: #5D5148;   /* Oak Creek                   */
-  --palette-4: #222122;   /* Black Out                   */
-  --palette-5: #141313;   /* Cursed Black                */
-  --palette-6: #060707;   /* Black Metal     — darkest   */
+  --palette-1: #B7A8A1;
+  /* Riveter Rose    — lightest  */
+  --palette-2: #8C796E;
+  /* Cedar Plank                 */
+  --palette-3: #5D5148;
+  /* Oak Creek                   */
+  --palette-4: #222122;
+  /* Black Out                   */
+  --palette-5: #141313;
+  /* Cursed Black                */
+  --palette-6: #060707;
+  /* Black Metal     — darkest   */
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
    SEMANTIC DESIGN TOKENS — reference palette vars, never hardcode hex here
    ════════════════════════════════════════════════════════════════════════════ */
 @theme inline {
-  --font-serif:  var(--font-playfair), Georgia, serif;
-  --font-sans:   var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-armelie: "Armelie", cursive;
 
   /* Backgrounds */
-  --color-bg:        var(--palette-6);  /* page / section bg          → bg-bg        */
-  --color-bg-alt:    var(--palette-5);  /* alternate section bg        → bg-bg-alt    */
-  --color-surface:   var(--palette-4);  /* raised cards, inputs        → bg-surface   */
-  --color-border:    var(--palette-4);  /* all borders                 → border-border */
+  --color-bg: var(--palette-6);
+  /* page / section bg          → bg-bg        */
+  --color-bg-alt: var(--palette-5);
+  /* alternate section bg        → bg-bg-alt    */
+  --color-surface: var(--palette-4);
+  /* raised cards, inputs        → bg-surface   */
+  --color-border: var(--palette-4);
+  /* all borders                 → border-border */
 
   /* Accent */
-  --color-accent:    var(--palette-2);  /* CTAs, links, highlights     → *-accent     */
+  --color-accent: var(--palette-2);
+  /* CTAs, links, highlights     → *-accent     */
 
   /* Text */
-  --color-fg:        var(--palette-1);  /* primary text                → text-fg      */
-  --color-fg-soft:   var(--palette-2);  /* secondary / body text       → text-fg-soft */
-  --color-fg-muted:  var(--palette-3);  /* labels, placeholders, hints → text-fg-muted*/
+  --color-fg: var(--palette-1);
+  /* primary text                → text-fg      */
+  --color-fg-soft: var(--palette-2);
+  /* secondary / body text       → text-fg-soft */
+  --color-fg-muted: var(--palette-3);
+  /* labels, placeholders, hints → text-fg-muted*/
 
   /* ── Legacy aliases so bg-cream / border-beige / text-gold still work ── */
-  --color-cream:      var(--palette-5);
-  --color-beige:      var(--palette-4);
-  --color-gold:       var(--palette-2);
+  --color-cream: var(--palette-5);
+  --color-beige: var(--palette-4);
+  --color-gold: var(--palette-2);
   --color-background: var(--palette-6);
   --color-foreground: var(--palette-1);
 
   /* Typography scale */
-  --font-size-display:  clamp(2rem, 9vw, 3.5rem);
-  --font-size-title:    clamp(1.25rem, 4vw, 1.75rem);
-  --font-size-label:    0.6875rem;
-  --font-size-body:     0.9375rem;
+  --font-size-display: clamp(2rem, 9vw, 3.5rem);
+  --font-size-title: clamp(1.25rem, 4vw, 1.75rem);
+  --font-size-label: 0.6875rem;
+  --font-size-body: 0.9375rem;
 
   /* Letter spacing */
-  --tracking-caps:   0.25em;
-  --tracking-wide:   0.12em;
+  --tracking-caps: 0.25em;
+  --tracking-wide: 0.12em;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
@@ -83,7 +97,9 @@ body::before {
   background-image: url('/images/flowerbg.png');
   background-repeat: repeat;
   background-size: 480px;
-  opacity: 0.06;
+  filter: invert(1) sepia(0.6) saturate(0.5) brightness(0.6);
+  mix-blend-mode: screen;
+  opacity: 0.25;
   pointer-events: none;
   z-index: 0;
 }
@@ -236,6 +252,7 @@ body::before {
   .depth-carousel__card {
     will-change: auto;
   }
+
   .depth-carousel__arrow,
   .depth-carousel__dot {
     transition: none;

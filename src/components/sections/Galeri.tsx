@@ -12,7 +12,7 @@ export default function Galeri() {
   const images = config.gallery;
 
   return (
-    <section id="galeri" className="bg-bg-alt py-16 px-6 relative overflow-hidden">
+    <section id="galeri" className="bg-bg-alt/80 py-16 px-6 relative overflow-hidden">
       <SectionWrapper>
         <div className="max-w-sm mx-auto space-y-8">
           <SectionHeader badge="Momen Bersama" title="Galeri Foto" />

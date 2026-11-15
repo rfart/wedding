@@ -6,7 +6,7 @@ import { config } from "@/config";
 
 export default function WeddingGift() {
   return (
-    <section id="hadiah" className="bg-bg py-16 px-6 relative overflow-hidden">
+    <section id="hadiah" className="py-16 px-6 relative overflow-hidden">
       <SectionWrapper>
         <div className="max-w-sm mx-auto space-y-8">
           <SectionHeader

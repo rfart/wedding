@@ -14,6 +14,7 @@ import RsvpWishes from "@/components/sections/RsvpWishes";
 import Penutup from "@/components/sections/Penutup";
 import MusicPlayer, { type MusicPlayerHandle } from "@/components/ui/MusicPlayer";
 import FadeContent from "@/components/ui/FadeContent";
+import FlowerDivider from "@/components/ui/FlowerDivider";
 
 function toTitleCase(str: string) {
   return str.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
@@ -56,24 +57,31 @@ export default function InvitationPage({ tamu }: { tamu: string }) {
         <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
           <Mukadimah />
         </FadeContent>
+        <FlowerDivider />
         <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
           <ProfilMempelai />
         </FadeContent>
+        <FlowerDivider />
         <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
           <DetailAcara />
         </FadeContent>
+        <FlowerDivider />
         <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
           <LoveStory />
         </FadeContent>
+        <FlowerDivider />
         <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
           <Galeri />
         </FadeContent>
+        <FlowerDivider />
         <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
           <WeddingGift />
         </FadeContent>
+        <FlowerDivider />
         <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
           <RsvpWishes tamu={displayTamu} />
         </FadeContent>
+        <FlowerDivider />
         <FadeContent effect="mist" duration={2.5} threshold={0.12} ease="power2.out">
           <Penutup />
         </FadeContent>

@@ -5,7 +5,7 @@ import SectionWrapper, { SectionItem } from "@/components/layout/SectionWrapper"
 
 export default function Mukadimah() {
   return (
-    <section id="home" className="bg-bg-alt py-16 px-6 relative overflow-hidden">
+    <section id="home" className="bg-bg-alt/80 py-16 px-6 relative overflow-hidden">
       <SectionWrapper>
         <div className="max-w-sm mx-auto text-center space-y-6">
           <SectionItem>

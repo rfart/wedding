@@ -118,7 +118,7 @@ function ProfileCard({
 
 export default function ProfilMempelai() {
   return (
-    <section id="pasangan" className="bg-bg py-16 px-6 relative overflow-hidden">
+    <section id="pasangan" className="py-16 px-6 relative overflow-hidden">
       <SectionWrapper>
         <div className="max-w-lg mx-auto space-y-10">
           <SectionHeader badge="Mempelai" title="Profil Pasangan" />

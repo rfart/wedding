@@ -5,7 +5,7 @@ import RsvpForm from "@/components/ui/RsvpForm";
 
 export default function RsvpWishes({ tamu }: { tamu: string }) {
   return (
-    <section id="ucapan" className="bg-bg-alt py-16 px-6 relative overflow-hidden">
+    <section id="ucapan" className="bg-bg-alt/80 py-16 px-6 relative overflow-hidden">
       <SectionWrapper>
         <div className="max-w-sm mx-auto space-y-8">
           <SectionHeader

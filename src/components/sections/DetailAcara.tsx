@@ -37,7 +37,7 @@ function AcaraCard({
 
 export default function DetailAcara() {
   return (
-    <section id="acara" className="bg-bg-alt py-16 px-6 relative overflow-hidden">
+    <section id="acara" className="bg-bg-alt/80 py-16 px-6 relative overflow-hidden">
       <SectionWrapper>
         <div className="max-w-sm mx-auto space-y-8">
           <SectionHeader

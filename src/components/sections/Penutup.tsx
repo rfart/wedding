@@ -7,7 +7,7 @@ import { config } from "@/config";
 
 export default function Penutup() {
   return (
-    <section className="bg-bg py-16 px-6 pb-28 relative overflow-hidden">
+    <section className="py-16 px-6 pb-28 relative overflow-hidden">
       <SectionWrapper>
         <div className="max-w-sm mx-auto space-y-8 text-center">
           <SectionItem>
