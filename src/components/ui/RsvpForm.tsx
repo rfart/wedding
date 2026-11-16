@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import type { Wish } from "@/lib/googleSheets";
 
 type Attendance = "Hadir" | "Tidak Hadir";
@@ -67,17 +68,31 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
 
   return (
     <div className="space-y-8">
-      {submitted ? (
-        <div className="text-center space-y-2 py-6">
-          <p className="font-serif text-lg text-fg">Terima kasih, {name}!</p>
-          <p className="text-fg-soft text-sm">
-            {attendance === "Hadir"
-              ? "Kami menantikan kehadiran Anda."
-              : "Kami menghargai kabar dari Anda."}
-          </p>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <AnimatePresence mode="wait">
+        {submitted ? (
+          <motion.div
+            key="thanks"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center space-y-2 py-6"
+          >
+            <p className="font-serif text-lg text-fg">Terima kasih, {name}!</p>
+            <p className="text-fg-soft text-sm">
+              {attendance === "Hadir"
+                ? "Kami menantikan kehadiran Anda."
+                : "Kami menghargai kabar dari Anda."}
+            </p>
+          </motion.div>
+        ) : (
+          <motion.form
+            key="form"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-fg-soft mb-1">Nama Tamu</label>
             <input
@@ -142,8 +157,9 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
           >
             {submitting ? "Mengirim..." : "Kirim"}
           </button>
-        </form>
-      )}
+          </motion.form>
+        )}
+      </AnimatePresence>
 
       {wishes.length > 0 && (
         <div className="space-y-3">
@@ -151,8 +167,15 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
             Ucapan Tamu
           </h4>
           <div className="space-y-3 max-h-80 overflow-y-auto pr-1">
-            {wishes.map((w, i) => (
-              <div key={i} className="bg-bg border border-border/40 rounded-lg px-4 py-3">
+            <AnimatePresence initial={false}>
+            {wishes.map((w) => (
+              <motion.div
+                key={w.timestamp}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-bg border border-border/40 rounded-lg px-4 py-3"
+              >
                 <div className="flex items-center gap-2">
                   <p className="font-medium text-fg text-sm">{w.name}</p>
                   {w.attendance && w.name !== "Anonim" && (
@@ -169,8 +192,9 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
                 {w.message && (
                   <p className="text-fg-soft text-sm mt-1">{w.message}</p>
                 )}
-              </div>
+              </motion.div>
             ))}
+            </AnimatePresence>
           </div>
         </div>
       )}
