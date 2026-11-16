@@ -55,7 +55,6 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
         { timestamp: new Date().toISOString(), name: displayName, attendance, message: message.trim() },
         ...prev,
       ]);
-      fetchWishes();
     } catch {
       setError("Gagal mengirim. Silakan coba lagi.");
     } finally {
