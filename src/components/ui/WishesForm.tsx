@@ -13,7 +13,7 @@ export default function WishesForm() {
 
   const fetchWishes = async () => {
     try {
-      const res = await fetch("/api/wishes");
+      const res = await fetch("/invitations/api/wishes");
       const data = await res.json();
       setWishes(data.wishes ?? []);
     } catch { /* silent fail */ }
@@ -29,7 +29,7 @@ export default function WishesForm() {
     const optimistic: Wish = { timestamp: new Date().toISOString(), name: name.trim(), attendance: "", message: message.trim() };
     setWishes((prev) => [optimistic, ...prev]);
     try {
-      const res = await fetch("/api/wishes", {
+      const res = await fetch("/invitations/api/wishes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name.trim(), message: message.trim() }),
