@@ -33,7 +33,7 @@ async function fetchWishes(): Promise<Wish[]> {
 
   const rows = res.data.values ?? [];
   const wishes: Wish[] = rows
-    .filter((r) => r[1])
+    .filter((r) => r[1] && r[1].trim() && r[1].toLowerCase() !== "name")
     .map((r) => {
       const isAttendanceCol = r[2] === "Hadir" || r[2] === "Tidak Hadir";
       const attendance = isAttendanceCol ? r[2] : "";
@@ -45,7 +45,8 @@ async function fetchWishes(): Promise<Wish[]> {
 }
 
 export const getWishes = unstable_cache(fetchWishes, ["wishes"], {
-  revalidate: 30,
+  revalidate: 10,
+  tags: ["wishes"],
 });
 
 export async function addWish(name: string, attendance: string, message: string): Promise<void> {
@@ -54,10 +55,35 @@ export async function addWish(name: string, attendance: string, message: string)
 
   const auth = getAuth();
   const sheets = google.sheets({ version: "v4", auth });
+
+  // Ensure header row exists so append never lands on row 1
+  const check = await sheets.spreadsheets.values.get({
+    spreadsheetId: sheetId,
+    range: "Wishes!A1:D1",
+  });
+  const hasHeader =
+    check.data.values &&
+    check.data.values.length > 0 &&
+    check.data.values[0]?.some((val) => typeof val === "string" && val.trim().length > 0);
+
+  if (!hasHeader) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: sheetId,
+      range: "Wishes!A1:D1",
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [["timestamp", "name", "attendance", "message"]],
+      },
+    });
+  }
+
+  // Use insertDataOption: "INSERT_ROWS" to physically insert a new row
+  // and prevent overwriting existing rows
   await sheets.spreadsheets.values.append({
     spreadsheetId: sheetId,
     range: "Wishes!A:D",
     valueInputOption: "USER_ENTERED",
+    insertDataOption: "INSERT_ROWS",
     requestBody: {
       values: [[new Date().toISOString(), name, attendance, message]],
     },

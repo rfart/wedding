@@ -27,7 +27,9 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
 
   const fetchWishes = async () => {
     try {
-      const res = await fetch("/invitations/api/wishes");
+      const res = await fetch(`/invitations/api/wishes?t=${Date.now()}`, {
+        cache: "no-store",
+      });
       const data = await res.json();
       setWishes(data.wishes ?? []);
     } catch { /* silent fail */ }
@@ -52,10 +54,7 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
       });
 
       setSubmitted(true);
-      setWishes((prev) => [
-        { timestamp: new Date().toISOString(), name: displayName, attendance, message: message.trim() },
-        ...prev,
-      ]);
+      await fetchWishes();
     } catch {
       setError("Gagal mengirim. Silakan coba lagi.");
     } finally {
