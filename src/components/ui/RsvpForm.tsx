@@ -27,7 +27,7 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
 
   const fetchWishes = async () => {
     try {
-      const res = await fetch("/api/wishes");
+      const res = await fetch("/invitations/api/wishes");
       const data = await res.json();
       setWishes(data.wishes ?? []);
     } catch { /* silent fail */ }
@@ -45,7 +45,7 @@ export default function RsvpForm({ tamu }: { tamu: string }) {
     try {
       const displayName = isAnon ? "Anonim" : name.trim();
 
-      await fetch("/api/wishes", {
+      await fetch("/invitations/api/wishes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: displayName, attendance, message: message.trim() }),
