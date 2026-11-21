@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "Undangan Pernikahan | Radifan & Syifa",
   description:
     "Dengan penuh rasa syukur dan kebahagiaan, kami mengundang Anda untuk hadir di hari pernikahan Radifan Aji Karami & Syifa Rahmatika, Minggu 6 Desember 2026.",
+  icons: {
+    icon: "/invitations/images/flowerbg.png",
+  },
 };
 
 export const viewport: Viewport = {
